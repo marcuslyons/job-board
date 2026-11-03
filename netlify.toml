@@ -1,0 +1,10 @@
+[build]
+  command = "pnpm run build"
+  publish = "build"
+
+# jobs.json is replaced by the daily scan, so it must not be cached like the
+# content-hashed bundles are.
+[[headers]]
+  for = "/data/jobs.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
